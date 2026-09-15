@@ -1,0 +1,12 @@
+# Python
+__pycache__/
+*.pyc
+
+# OS
+.DS_Store
+
+# セッションデータ: 既定では無視し、sessions/example のみ雛形として追跡する
+sessions/*/
+!sessions/example/
+!sessions/example/**
+!sessions/.gitkeep

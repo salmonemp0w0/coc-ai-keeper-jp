@@ -1,0 +1,95 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.local/coc-ai-keeper-jp/state.schema.json",
+  "title": "coc-ai-keeper-jp session state",
+  "description": "セッション状態(state.json)の簡易スキーマ。ルールブック本文・シナリオ本文は含まない。",
+  "type": "object",
+  "required": ["session_id", "edition", "investigator", "log_file"],
+  "properties": {
+    "session_id": {
+      "type": "string",
+      "description": "セッションを識別するID(フォルダ名と一致させる)"
+    },
+    "edition": {
+      "type": "string",
+      "enum": ["6e-jp", "7e"],
+      "description": "採用ルール版"
+    },
+    "created_at": {
+      "type": ["string", "null"],
+      "description": "ISO8601形式の作成日時"
+    },
+    "updated_at": {
+      "type": ["string", "null"],
+      "description": "ISO8601形式の最終更新日時"
+    },
+    "scenario": {
+      "type": "object",
+      "properties": {
+        "title": {"type": ["string", "null"]},
+        "current_scene": {"type": ["string", "null"]}
+      }
+    },
+    "investigator": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "name": {"type": ["string", "null"]},
+        "occupation": {"type": ["string", "null"]},
+        "hp": {
+          "type": "object",
+          "properties": {
+            "current": {"type": ["integer", "null"]},
+            "max": {"type": ["integer", "null"]}
+          }
+        },
+        "san": {
+          "type": "object",
+          "properties": {
+            "current": {"type": ["integer", "null"]},
+            "max": {"type": ["integer", "null"]}
+          }
+        },
+        "mp": {
+          "type": "object",
+          "properties": {
+            "current": {"type": ["integer", "null"]},
+            "max": {"type": ["integer", "null"]}
+          }
+        },
+        "skills": {
+          "type": "object",
+          "description": "技能名(文字列)から技能値(整数)へのマップ。\"_comment\"キーは説明用の文字列として許容する。",
+          "additionalProperties": {"type": ["integer", "string"]}
+        },
+        "inventory": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "conditions": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "notes": {"type": ["string", "null"]}
+      }
+    },
+    "npcs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {"type": "string"},
+          "notes": {"type": ["string", "null"]}
+        }
+      }
+    },
+    "flags": {
+      "type": "object",
+      "description": "シナリオ進行管理用の自由な真偽値・文字列フラグ"
+    },
+    "log_file": {
+      "type": "string",
+      "description": "対応するプレイログファイル名(通常 log.md)"
+    }
+  }
+}

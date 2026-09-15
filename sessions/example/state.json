@@ -1,0 +1,31 @@
+{
+  "_comment": "これはセッション状態の空スキーマ例です。ルールブック本文・シナリオ本文は含みません。",
+  "session_id": "example",
+  "edition": "6e-jp",
+  "created_at": null,
+  "updated_at": null,
+  "scenario": {
+    "_comment": "シナリオ名やメモは短い自作の識別情報のみ。市販シナリオ本文は書かないこと。",
+    "title": null,
+    "current_scene": null
+  },
+  "investigator": {
+    "_comment": "探索者の状態。詳細な技能一覧・初期値の算出はユーザーの手元資料に従う。",
+    "name": null,
+    "occupation": null,
+    "hp": {"current": null, "max": null},
+    "san": {"current": null, "max": null},
+    "mp": {"current": null, "max": null},
+    "skills": {
+      "_comment": "例: \"目星\": 60 のように技能名と技能値のみを記録する"
+    },
+    "inventory": [],
+    "conditions": [],
+    "notes": null
+  },
+  "npcs": [],
+  "flags": {
+    "_comment": "シナリオ進行のフラグ管理用(自由記述)"
+  },
+  "log_file": "log.md"
+}
