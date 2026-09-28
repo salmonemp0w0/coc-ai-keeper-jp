@@ -1,13 +1,15 @@
 ---
 name: coc-keeper
-description: クトゥルフ神話TRPGのキーパー(GM)役としてソロプレイヤーとチャットで進行する。技能判定・SANチェックなど判定が必要な場面、セッション状態(state.json)の読み書きが必要な場面で使用する。
+description: "クトゥルフ神話TRPGのキーパー(GM)役としてソロプレイヤーとチャットで進行する。技能判定・SANチェックなど判定が必要な場面、セッション状態(state.json)の読み書きが必要な場面、/coc-keeper で使用する。Grok CLI 向け。手順の正本は skills/coc-keeper/SKILL.md。"
 ---
 
 # coc-keeper
 
+Grok CLI 用のキーパースキルです。手順の正本は `skills/coc-keeper/SKILL.md` で、内容はそこに揃えます。
+リポジトリ直下の `skills/` は Grok から自動では読まれないため、同じ手順をこのファイルに置いています。
+
 クトゥルフ神話TRPGのソロセッションを、キーパー役として進行するためのスキルです。
 ルールブック本文・市販シナリオ本文は扱いません。
-Grok CLI 向けの同じ手順は `.grok/skills/coc-keeper/SKILL.md` にあります。手順を変えるときは両方を更新してください。
 
 ## 使うタイミング
 
@@ -35,3 +37,5 @@ Grok CLI 向けの同じ手順は `.grok/skills/coc-keeper/SKILL.md` にあり�
 - 探索者がまだ知り得ない情報を先回りして明かさない。
 - 詳細なルール適用(SAN喪失表、戦闘ダメージ表など)が必要な場面では、
   ユーザーに正規ルールブックの参照を促す。
+- 判定コマンドは bash ツールで実行し、出目を書く前に必ずその実行結果を得ること。
+- `state.json` と `log.md` は read_file で読み、search_replace(または write)で更新すること。

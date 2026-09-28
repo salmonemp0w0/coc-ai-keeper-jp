@@ -1,12 +1,14 @@
 # 要件メモ(v0)
 
-コーディングエージェント(Claude Code / Codex)をキーパー役にしてクトゥルフ神話TRPGを
+コーディングエージェント(Claude Code / Codex / Grok CLI)をキーパー役にしてクトゥルフ神話TRPGを
 ソロプレイするための、最小構成のスキャフォールドの要件メモです。
 
 ## スコープ(v0)
 
 - ソロプレイ、1探索者を想定。
-- キーパー役はチャットベースのコーディングエージェント(Claude Code / Codex)。
+- キーパー役はチャットベースのコーディングエージェント(Claude Code / Codex / Grok CLI)。
+  Grok CLI では `scripts/grok-keeper.sh` から起動し、スキルは `.grok/skills/coc-keeper/`
+  (正本は `skills/coc-keeper/SKILL.md`)を使う。
 - 既定ルールは第6版・日本語寄り(カジュアル運用)。第7版は任意プロファイルとして選択可能。
 - 判定(ダイスロール)はエージェントではなく `scripts/roll.py` が実行する
   (LLMによる出目の捏造を防ぐため)。
