@@ -1,7 +1,8 @@
-# AGENTS.md — Claude Code / Codex 向け運用ルール
+# AGENTS.md — Claude Code / Codex / Grok CLI 向け運用ルール
 
-このリポジトリでコーディングエージェントに「キーパー(KP)」役を任せる際の、
-短い運用ルールです。詳しい口調・振る舞いは `prompts/keeper-system.md` を参照してください。
+このリポジトリでコーディングエージェント(Claude Code / Codex / Grok CLI)に
+「キーパー(KP)」役を任せる際の、短い運用ルールです。
+詳しい口調・振る舞いは `prompts/keeper-system.md` を参照してください。
 
 ## 必須ルール
 
@@ -27,3 +28,13 @@
 
 6. セッションファイルを新規作成する場合は `sessions/<session-id>/` 配下に
    `state.json` と `log.md` を作成し、`sessions/example/` の構造を踏襲する。
+
+## Grok CLI での注意
+
+Grok CLI でも上の必須ルールは同じです。ツールの使い方だけ次を守ってください。
+
+- 判定コマンドは **bash ツールで実行**する。出目や成否を文章に書く前に、必ずその実行結果を得ること。
+- 環境に `python` が無ければ `python3` を使う(振り直し扱いにしない)。
+- `state.json` と `log.md` の読み書きは、記憶だけで済ませず、read_file / search_replace などのファイルツールで行うこと。
+- このファイルと `.grok/skills/coc-keeper/` を読むにはフォルダ信頼が必要です。非対話(`grok -p`)では `--trust` を付けてください(初回のみ。記録先は `~/.grok/trusted_folders.toml`)。`scripts/grok-keeper.sh` は起動時に `--trust` とキーパー用の `--rules` を付けます。
+- スキルの正本は `skills/coc-keeper/SKILL.md` です。Grok が自動発見するのは `.grok/skills/coc-keeper/SKILL.md` で、TUI では `/coc-keeper` で呼び出せます。
